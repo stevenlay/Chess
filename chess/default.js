@@ -7,11 +7,11 @@ var startGame = function() {
         position: "start"
     };
 
-    var newBoard = new ChessBoard('board', boardConfig);
-    var game = new Chess();
+    newBoard = new ChessBoard('board', boardConfig);
+    game = new Chess();
 }
 
-var moveHandler =function (source, target) {
+var moveHandler = function (source, target) {
     var move = game.move(
         {from: source, to: target}
         );
