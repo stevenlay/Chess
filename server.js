@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-app.use(express.static('public'));
+app.use(express.static('chess'));
 var http = require('http').Server(app);
 var port = 3000;
 
