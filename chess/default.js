@@ -1,18 +1,11 @@
-var startGame = function() {
-    var boardConfig = {
+var startGame = function () {
+    var boardCFG = {
         draggable: true,
-        dropOffBoard: "trash",
-        sparePieces: true,
+        position: 'start',
         onDrop: handleMove,
-        position: "start"
     };
 
-    newBoard = new ChessBoard('board', boardConfig);
     game = new Chess();
-}
+    var board = new ChessBoard('board');
 
-var moveHandler = function (source, target) {
-    var move = game.move(
-        {from: source, to: target}
-        );
 }
