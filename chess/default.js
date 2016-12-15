@@ -1,4 +1,5 @@
 var cfg = {
+    showNotation: false,
     draggable: true,
     position: 'start',
     onDrop: handleMove,
