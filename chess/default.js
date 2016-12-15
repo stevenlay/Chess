@@ -1,10 +1,16 @@
+var cfg = {
+    draggable: true,
+    position: 'start',
+    onDrop: handleMove,
+};
+
+
 var game = new Chess();
-var board = new ChessBoard('chessBoard','start');
+var board = new ChessBoard('board', cfg);
 
 var handleMove = function(source, target) {
     var move = game.move({from: source, to:target});
-}
+};
 
-$('#startBtn').on('click', chessBoard.start);
-$('#clearBtn').on('click', chessBoard.clear);
-
+$('#startBtn').on('click', board.start);
+$('#clearBtn').on('click', board.clear);
