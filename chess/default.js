@@ -31,7 +31,7 @@ var greySquare = function(square) {
 var onDragStart = function(source, piece) {
     // if game is over or not your turn (black or white side)
     if (game.game_over() || (game.turn() === 'w' && piece.search(/^b/) !== -1) ||
-        game.turn() === 'b' && piece.search(/^w/ !== -1)){
+        (game.turn() === 'b' && piece.search(/^w/) !== -1))/{
             return false;
     }
 };
