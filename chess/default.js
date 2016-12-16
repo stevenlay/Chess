@@ -2,9 +2,10 @@ var cfg = {
     showNotation: false,
     draggable: true,
     position: 'start',
-    onDrop: handleMove,
+    onDrop: onDrop,
     onMouseoverSquare: onMouseoutSquare,
-    onSnapEnd: onSnapEnd
+    onSnapEnd: onSnapEnd,
+    onDragStart: onDragStart
 };
 
 
