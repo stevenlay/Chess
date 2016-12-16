@@ -27,6 +27,24 @@ var greySquare = function(square) {
     squareEl.css('background', background);
 };
 
+var onDragStart = function(source, piece) {
+    // if game is over or not your turn (black or white side)
+    if (game.game_over() || (game.turn() === 'w' && piece.search(/^b/) !== -1) ||
+        game.turn() === 'b' && piece.search(/^w/ !== -1)){
+            return false;
+    }
+};
+
+var onDrop = function(source, target) {
+    removeGreySquares();
+
+    //snapback if not a valid move
+    var move = handleMove(source,target);
+    if(!move) {
+        return 'snapback';
+    }
+};
+
 var handleMove = function(source, target) {
     var move = game.move({from: source, to:target});
 };
