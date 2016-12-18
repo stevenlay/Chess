@@ -3,9 +3,10 @@ var cfg = {
     draggable: true,
     position: 'start',
     onDrop: onDrop,
-    onMouseoverSquare: onMouseoutSquare,
+    onMouseoutSquare: onMouseoutSquare,
     onSnapEnd: onSnapEnd,
-    onDragStart: onDragStart
+    onDragStart: onDragStart,
+    onMouseoverSquare: onMouseoverSquare
 };
 
 
@@ -22,7 +23,7 @@ var greySquare = function(square) {
 
     var background = '#a9a9a9';
     if (squareEl.hasClass('black-3c85d')) {
-        background = '#696969'
+        background = '#696969';
     }
 
     squareEl.css('background', background);
@@ -46,8 +47,28 @@ var onDrop = function(source, target) {
     }
 };
 
+var onMouseoverSquare = function(square, piece) {
+    var moves = games.moves({
+        square: square, verbose: true
+    });
+    //if no moves available for the square, exit
+    if (moves.length === 0) {
+        return;
+    }
+    //highlight square
+    greySquare(square);
+
+    //highlight squares possible for movement
+    for (var i = 0; i < moves.length; i++) {
+        greySquare(moves[i].to);
+    }
+};
+
 var handleMove = function(source, target) {
-    var move = game.move({from: source, to:target});
+    var move = game.move({from: source, to:target, promotion:'q'});
+    if (!move) {
+        return 'snapback';
+    }
 };
 
 var onMouseoutSquare = function(square, piece) {
