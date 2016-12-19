@@ -1,17 +1,4 @@
-var cfg = {
-    showNotation: false,
-    draggable: true,
-    position: 'start',
-    onDrop: onDrop,
-    onMouseoutSquare: onMouseoutSquare,
-    onSnapEnd: onSnapEnd,
-    onDragStart: onDragStart,
-    onMouseoverSquare: onMouseoverSquare
-};
-
-
 var game = new Chess();
-var board = new ChessBoard('board', cfg);
 
 
 var removeGreySquares = function() {
@@ -79,6 +66,20 @@ var onMouseoutSquare = function(square, piece) {
 var onSnapEnd = function() {
     board.position(game.fen());
 };
+
+var cfg = {
+    showNotation: false,
+    draggable: true,
+    position: 'start',
+    onDrop: onDrop,
+    onMouseoutSquare: onMouseoutSquare,
+    onSnapEnd: onSnapEnd,
+    onDragStart: onDragStart,
+    onMouseoverSquare: onMouseoverSquare
+};
+
+
+var board = new ChessBoard('board', cfg);
 
 $('#startBtn').on('click', board.start);
 $('#clearBtn').on('click', board.clear);
