@@ -1,25 +1,28 @@
 var board, game = new Chess();
 
-var removeGreySquares = function() {
-  $('#board .square-55d63').css('background', '');
-};
-
 var greySquare = function(square) {
-    var squareEl = $('#board .square-' + square);
 
+    //gets board element at particular square
+    var squareEl = $('#board .square-' + square);
     var background = '#a9a9a9';
-    if (squareEl.hasClass('black-3c85d')=== true) {
+
+    //  if square element has a piece, turn background
+    if (squareEl.hasClass('black-3c85d')) {
         background = '#696969';
     }
-
     squareEl.css('background', background);
+};
+
+//removes the background style from background of a squareEl
+var removeGreySquares = function() {
+    $('#board .square-55d63').css('background', '');
 };
 
 var onDragStart = function(source, piece) {
     // if game is over or not your turn (black or white side)
     if (game.game_over() === true|| (game.turn() === 'w' && piece.search(/^b/) !== -1) ||
         (game.turn() === 'b' && piece.search(/^w/) !== -1)){
-            return false;
+        return false;
     }
 };
 
@@ -27,26 +30,19 @@ var onDrop = function(source, target) {
     removeGreySquares();
 
     //snapback if not a valid move
-    var move = game.move({
-        from: source,
-        to: target,
-        promotion: 'q' // NOTE: always promote to a queen for example simplicity
-    });
-    if(!move === null) {
-        return 'snapback';
-    }
+    var move = handleMove(source, target);
 };
 
 var onMouseoverSquare = function(square, piece) {
-    var moves = games.moves({
+    var moves = game .moves({
         square: square,
         verbose: true
     });
-    //if no moves available for the square, exit
-    if (moves.length === 0) {
+    //if number of moves available = 0, break
+    if (!moves.length) {
         return;
     }
-    //highlight square
+    //highlight square if moves > 0
     greySquare(square);
 
     //highlight squares possible for movement
