@@ -49,7 +49,8 @@ var onDrop = function(source, target) {
 
 var onMouseoverSquare = function(square, piece) {
     var moves = games.moves({
-        square: square, verbose: true
+        square: square,
+        verbose: true
     });
     //if no moves available for the square, exit
     if (moves.length === 0) {
