@@ -79,6 +79,7 @@ var cfg = {
 
 
 board = new ChessBoard('board', cfg);
+$(window).resize(board.resize);
 
 $('#startBtn').on('click', board.start);
 $('#clearBtn').on('click', board.clear);
