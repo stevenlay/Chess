@@ -11,3 +11,11 @@ app.get('/', function(req, res) {
 http.listen(port, function() {
     console.log('listening on *: ' + port);
 });
+
+// setup my socket server
+//var io = require('socket.io')(http);
+
+}// Called when the client calls socket.emit('move')
+//socket.on('move', function(msg) {
+//    socket.broadcast.emit('move', msg);
+});

@@ -53,6 +53,7 @@ var onMouseoverSquare = function(square, piece) {
 
 var handleMove = function(source, target) {
     var move = game.move({from: source, to:target, promotion:'q'});
+    //socket.emit('move', move);
     if (!move) {
         return 'snapback';
     }
@@ -83,3 +84,4 @@ $(window).resize(board.resize);
 
 $('#startBtn').on('click', board.start);
 $('#clearBtn').on('click', board.clear);
+//var socket = io();
