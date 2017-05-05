@@ -84,4 +84,10 @@ $(window).resize(board.resize);
 
 $('#startBtn').on('click', board.start);
 $('#clearBtn').on('click', board.clear);
-//var socket = io();
+
+// setup my socket client
+var socket = io();
+msgButton.onclick = function(e) {
+    // someone clicked send a message
+    socket.emit('message', 'hello world!');
+}
