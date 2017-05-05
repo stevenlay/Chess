@@ -8,14 +8,23 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/chess/default.html');
 });
 
-http.listen(port, function() {
-    console.log('listening on *: ' + port);
-});
+
+
+
 
 // setup my socket server
-//var io = require('socket.io')(http);
+var io = require('socket.io')(http);
 
-}// Called when the client calls socket.emit('move')
-//socket.on('move', function(msg) {
-//    socket.broadcast.emit('move', msg);
+io.on('connection', function(socket) {
+    console.log('New connection' + socket);
+
+    socket.on('move', function(msg) {
+        socket.broadcast.emit('move', msg);
+    });
+});
+
+
+
+http.listen(port, function() {
+    console.log('listening on *: ' + port);
 });
